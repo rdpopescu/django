@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="col-md-12">
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="col-md-6">
+            {{ field.label }} {{ field }}
+                <span style="color: red;"> {{ field.errors }}</span>
+            </div>
+        {% endfor %}
+    <button type="submit" class="btn btn-success">Salveaza</button>
+    {% if 'adaugare' in request.path %}
+        <a class="btn btn-info" href="{% url 'locations:lista_locatii' %}">Back</a>
+    {% endif %}
+    </form>
+    </div>
+{% endblock %}
