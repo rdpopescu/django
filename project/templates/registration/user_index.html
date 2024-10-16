@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+    <a class="btn btn-primary" href="{% url 'userprofile:utilizator_nou' %}">Adaugare utilizatori</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Index</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in user_list %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ item.first_name }}</td>
+                    <td>{{ item.last_name }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.username }}</td>
+                    <td>
+                          <a href="{% url 'userprofile:invitatie_utilizator' item.pk %}" class="btn btn-success">Invita utilizatorul</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
